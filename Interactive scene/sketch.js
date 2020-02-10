@@ -1,11 +1,10 @@
 // Interactive Scene
 // Jordan Cho
-// 2/7/2020
+// 2/10/2020
 //
 // Extra for Experts:
-//Water animation
+//Water animation and background changes
 // - describe what you did to take this project "above and beyond"
-let waterm;
 let XRaft =100;
 let px=500;
 let py = 500;
@@ -19,7 +18,6 @@ function setup() {
 function draw() {
   px = mouseX;
   py = mouseY;
-  noStroke();
   back();
   water();
   raft();
@@ -34,7 +32,7 @@ function mouseClicked(){
     back();
     currentBack = currentBack +1;
   }
-  else if (mouseButton ===LEFT){
+  else if (mouseButton ===LEFT && currentBack === 4){
     currentBack=0;
     noStroke();
   }
@@ -54,6 +52,10 @@ function back(){
     background4();
     noStroke();
   }
+  if(currentBack===4){
+    background1();
+    noStroke();
+  }
 }
 
 //first background
@@ -62,15 +64,22 @@ function background1(){
   fill(245, 221, 66);
   noStroke();
   ellipse(700, 100, 90, 90);
+  noFill();
+  stroke(245, 221, 66);
+  ellipse(700, 100, 100, 100);
+  ellipse(700, 100, 110, 110);
+  ellipse(700, 100, 120, 120);
+
 }
 //second background
 function background2(){
   background(10, 0, 100);
   fill(250, 256, 250);
   noStroke();
-  ellipse(70, 100, 90, 90);
+  ellipse(70, 100, 200, 200);
   fill(240, 246, 240);
   noStroke();
+  ellipse(30, 110, 40, 40);
   ellipse(72, 110, 10, 10);
   ellipse(60, 70, 25, 25);
 }
@@ -92,14 +101,14 @@ function background4(){
   background(255, 20, 100);
   fill(255, 240, 250);
   noStroke();
-  ellipse(100, 230, 123,64);
-  ellipse(150, 240, 123,64);
-  ellipse(130, 200, 133,54);
-
-  ellipse(400, 130, 123,64);
-  ellipse(450, 140, 123,64);
-  ellipse(430, 100, 133,54);
-
+  quad(12, 23, 500, 580, 63, 76);
+  quad(112, 40, 600, 580, 163, 76);
+  quad(212, 23, 700, 580, 263, 76);
+  ellipse(1, 1, 400, 400);
+  fill(250, 235, 245);
+  ellipse(1, 1, 300, 300);
+  fill(245, 230, 240);
+  ellipse(1, 1, 200, 200);
 }
 
 //WATER
@@ -107,6 +116,7 @@ function background4(){
 function water1(){
   fill(0, 0, 255);
   rect(0, 600, 8000, 500);
+  stroke(25, 6, 99);
   ellipse(0,600, 300, 30);
   ellipse(250,600, 300, 30);
   ellipse(500,600, 300, 30);
@@ -118,6 +128,7 @@ function water1(){
 function water2(){
   fill(0, 0, 255);
   rect(0, 600, 8000, 500);
+  stroke(25, 6, 99);
   ellipse(100,600, 300, 30);
   ellipse(350,600, 300, 30);
   ellipse(600,600, 300, 30);
@@ -147,15 +158,17 @@ function raft(){
   if (keyIsDown(LEFT_ARROW)){
     XRaft-=10;
   }
-  rect(XRaft, 555, 200, 40);
-  ellipse(XRaft-2,575, 40, 40);
+  noStroke();
+  ellipse(XRaft-2,575, 40, 40); 
   ellipse(XRaft+202,575, 40, 40);
+  rect(XRaft, 555, 200, 40);
+  
 }
 
 
 //Person
 function stickman(){
-  
+  noStroke();
   fill(0);
   ellipse(px, py, 40, 40);
   stroke(0);
@@ -165,11 +178,12 @@ function stickman(){
   line(px, py +100, px+20, py+120);
   line(px, py+55, px + 30, py +20 );
   line(px +30, py+20, 600, 656);
+  noStroke();
 }
 // fish
 function fish(){
   ellipse(600,656, 40, 20 );
-  triangle(590, 656, 550, 645, 550, 671);
+  triangle(595, 656, 555, 645, 555, 671);
 }
 
 //text
