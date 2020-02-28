@@ -1,9 +1,9 @@
 // Multi_Colored Grid
 // Jordan Cho
-// Date
+// 2/28/2020
 //
 // Extra for Experts:
-// - Color Pallette and Falling squares
+// - Color Palette and No Falling squares
 let gridSpace = 20;
 
 function setup() {
@@ -14,36 +14,36 @@ function setup() {
 function draw() {
 }
 function mousePressed() {
-  if (gridSpace > 1) {
+  if (gridSpace > 2) {
     if (mouseButton === LEFT) {
-      gridSpace -= 1;
+      gridSpace -= 2;
       drawGrid();
     }
   }
-  else if (mouseButton === CENTER) {
-    gridSpace += 1;
-    drawGrid();
-  }
 }
+
+//keyboard
 function keyPressed(){
   if(keyCode !== SHIFT){
     gridSpace = 20;
     drawGrid();
   }
   if(keyCode === SHIFT){
-    gridSpace += 1;
+    gridSpace += 2;
     drawGrid();
   }
 }
+
+//Draws grid
 function drawGrid() {
   rectMode(CENTER);
   noStroke();
-  //stroke(1);
-  background(0);
-  for (let x = gridSpace / 2; x < width+10; x += gridSpace) {
-    for (let y = gridSpace / 2; y < height+10; y += gridSpace) {
-      fill(random(10), random(10,50), random(50,250));
+  //stroke(random(50), random(50), random(80,250));
+  background(5, 40, 240);
+  for (let x = gridSpace / 2; x < width-gridSpace/2 ; x += gridSpace) {
+    for (let y = gridSpace / 2; y < height-gridSpace/2; y += gridSpace) {
+      fill(random(70), random(10), random(80,250));
       rect(x, y, gridSpace, gridSpace);
     }
   }
-} 
+}    
