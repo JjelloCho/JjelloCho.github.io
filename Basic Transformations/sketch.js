@@ -1,3 +1,4 @@
+//Jordan Cho
 // Basic Transformations Sandbox
 
 
@@ -13,9 +14,23 @@ function draw() {
   drawBasicGrid(220);
 
 
-  //transformation one: TRANSLATION
 
- 
+  //transformation one: TRANSLATION
+  //push();
+  //translate(200, 0);
+  //scale(1);
+  //drawBasicGrid(150);
+  //face(0, 0);
+  //pop();
+  //push();
+  //translate(0, 200);
+  //translate(40, 240);
+  //rectMode(CENTER);
+  //drawBasicGrid(150);
+  //rotate(radians(-frameCount));
+  //rectangleBlue(0, 0);
+  //pop();
+
 
   //add push()  pop()
 
@@ -33,7 +48,15 @@ function draw() {
 
 
   //Combinations of Transformations
+  push();
+  translate(width/2, height/2);
+  ellipse(0, 0, 500, 500);
+  fill(0);
+  ellipse(0, 0, 5, 5);
+  stroke(5);
+  line(0, -230, 0, -150);
 
+  fill(250);
   
 
 }
@@ -80,10 +103,10 @@ function rectangleBlue(x, y) {
 function drawBasicGrid(shade) {
   //draw the normal cartesian Coordinate Grid, in a light color. Spaced at 20 px by default
   stroke(shade);
-  for (let x = 0; x < width; x += 20) {
+  for (let x = 0; x < width; x += originalSpacing) {
     line(x, 0, x, height);
   }
-  for (let y = 0; y < height; y += 20) {
+  for (let y = 0; y < height; y += originalSpacing) {
     line(0, y, width, y);
   }
 
