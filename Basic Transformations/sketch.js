@@ -53,8 +53,31 @@ function draw() {
   ellipse(0, 0, 500, 500);
   fill(0);
   ellipse(0, 0, 5, 5);
-  stroke(5);
-  line(0, -230, 0, -150);
+  push();
+  for(let i = 0; i<13; i++){
+    strokeWeight(5);
+    rect(-1, -240, 1, 40);
+    //line(0, -230, 0, -200);
+    rotate(radians(30));
+  }
+  pop();
+  push();
+  strokeWeight(1);
+  rotate(radians(6));
+  for(let i = 0 ; i<14; i++){
+    for(let i = 0; i<5; i++){
+      rect(-1, -240, 1, 30);
+      rotate(radians(6));
+    }
+    rotate(radians(36));
+  }
+  pop();
+
+  push();
+
+
+
+  
 
   fill(250);
   
