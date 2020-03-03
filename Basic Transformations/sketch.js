@@ -11,6 +11,7 @@ function setup() {
 
 function draw() {
   background(255);
+  strokeWeight(2);
   drawBasicGrid(220);
 
 
@@ -50,38 +51,53 @@ function draw() {
   //Combinations of Transformations
   push();
   translate(width/2, height/2);
+  strokeWeight(5);
   ellipse(0, 0, 500, 500);
   fill(0);
-  ellipse(0, 0, 5, 5);
+  ellipse(0, 0, 4, 4);
+
   push();
   for(let i = 0; i<13; i++){
     strokeWeight(5);
-    rect(-1, -240, 1, 40);
+    rect(-1, -235, 1, 40);
     //line(0, -230, 0, -200);
     rotate(radians(30));
   }
   pop();
+
   push();
   strokeWeight(1);
   rotate(radians(6));
   for(let i = 0 ; i<14; i++){
     for(let i = 0; i<5; i++){
-      rect(-1, -240, 1, 30);
+      rect(-1, -235, 1, 30);
       rotate(radians(6));
     }
     rotate(radians(36));
   }
   pop();
 
-  push();
-
-
-
-  
-
   fill(250);
-  
 
+  push();
+  rotate(radians(-90));
+  stroke(255, 0, 0);
+  strokeWeight(2);
+  rotate(radians(second()*6));
+  line(0,0, width*0.30,0);
+  pop();
+
+  push();
+  rotate(radians(-90));
+  stroke(0, 255, 0);
+  strokeWeight(2);
+  rotate(radians(minute()*6 +second()/10));
+  line(0,0, width*0.23,0);
+  pop();
+
+  fill(0);
+  ellipse(0, 0, 4, 4);
+  pop();
 }
 
 
