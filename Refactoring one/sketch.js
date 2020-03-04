@@ -5,14 +5,14 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let x, y, c, d;
+let x, y, xSpeed, ySpeed;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   x = 200;//x starting pos
   y = 300;//y starting pos
-  c = random(3, 8);
-  d = random(3, 8);
+  xSpeed = random(3, 8);
+  ySpeed = random(3, 8);
 }
 
 function draw() {
@@ -22,12 +22,12 @@ function draw() {
 }
 
 function addCD() {
-  x += c;
-  y += d;//add the values of c and d to xpos and y pos
+  x += xSpeed;
+  y += ySpeed;//add the values of c and d to xpos and y pos
   if (y >= height - 75 || y <= 0) { //if true than bouce by substracting values
-    d = d * -1;
+    ySpeed = ySpeed * -1;
   }
   if (x >= width - 250 || x <= 0) {//if true than bouce by substracting values
-    c = c * -1;
+    xSpeed = xSpeed * -1;
   }
 }
