@@ -5,9 +5,9 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-const WIDTHRECT = 3;
-const DT = 0.02;
-const OFFSETSPEED = 0.05;
+const WIDTHRECT = 2;//width each rect abd spacing
+const DT = 0.02;//time for inside for loop
+const OFFSETSPEED = 0.04;//allows
 const TIMEDEFAULT = 10;
 let maxHeight;
 let y;
@@ -16,31 +16,31 @@ let yArray = [];//Keeps track of y Coordinates
 let xArray = [];//keeps track of x coordinates
 let greatestY, greatestX;//Keeps track the highest points
 let offsetAmt = 0.00002;
-let strokeColorAVG = [255, 0, 0];
-let terrainColor = [0, 0, 255];
-let flagColor = 0;
+let strokeColorAVG = [225, 225, 225];
+let terrainColor = [100, 0, 255];
+let flagColor = 255;
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(220);
   time = TIMEDEFAULT;
-  maxHeight = height * 0.15;
-  generateTerrain();
+  maxHeight = height * 0.15;//Sets the highest y can be
 }
 
 function draw() {
+  background(0, 190, 195);
+  //Allows panning by changing the first y value slightly each time
   time = TIMEDEFAULT + offsetAmt;
-  background(220);
   generateTerrain();
-  offsetAmt += OFFSETSPEED;
-  drawFlag();
+  offsetAmt -= OFFSETSPEED;
+  //Draws the flag and the average line
   findY();
+  drawFlag();
   average();
 }
-
+// Draws Terrain
 function generateTerrain() {
-  noStroke();
   if(yArray.length>width){
     yArray= [];
+    xArray = [];
   }
   for (let x = 0; x < width; x += WIDTHRECT - 1) {//draws the terrain
     rectMode(CORNERS);
@@ -51,6 +51,8 @@ function generateTerrain() {
     rect(x, height, x + WIDTHRECT, y);
     yArray.push(y);//adds to the arrays
     xArray.push(x);
+    strokeWeight(1);
+    stroke(0);
   }
 }
 
@@ -58,10 +60,11 @@ function generateTerrain() {
 function drawFlag() {
   fill(flagColor);
   stroke(flagColor);
-  strokeWeight(1);
+  strokeWeight(2);
   line(greatestX + WIDTHRECT / 2, greatestY - 15, greatestX + WIDTHRECT / 2, greatestY);
-  triangle(greatestX + WIDTHRECT / 2, greatestY - 17, greatestX + WIDTHRECT / 2, greatestY - 10, greatestX + WIDTHRECT + 3, greatestY - 13.5);
+  triangle(greatestX + WIDTHRECT / 2, greatestY - 20, greatestX + WIDTHRECT / 2, greatestY - 10, greatestX + WIDTHRECT + 5, greatestY - 15);
 }
+
 //finds the average
 function average() {
   stroke(strokeColorAVG[0], strokeColorAVG[1], strokeColorAVG[2]);
@@ -72,13 +75,14 @@ function average() {
   yAverage = yAverage / yArray.length;
   line(0, yAverage, width, yAverage);
 }
+
 //finds the greatest y
 function findY() {
-  greatestY = yArray[0];
+  greatestY = height;
   for (let i = 0; i < yArray.length; i++) {
-    if (yArray[i] < greatestY) {
-      greatestY = yArray[i];
+    if (yArray[i] <= greatestY) {
       greatestX = xArray[i];
+      greatestY = yArray[i];
     }
   }
 }
