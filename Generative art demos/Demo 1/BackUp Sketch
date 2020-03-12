@@ -1,0 +1,22 @@
+// Generative Art Demo 03
+// Jordan Cho
+// 03/11/2020
+//
+// Extra for Experts:
+// - describe what you did to take this project "above and beyond"
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+  background(220);
+  borders();
+}
+
+function borders() {
+  stroke(0);
+  strokeWeight(15);
+  rect(0, 0, width, height);
+  strokeWeight(1);
+}
