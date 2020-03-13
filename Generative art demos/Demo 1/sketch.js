@@ -7,7 +7,7 @@
 
 const  RECT_WIDTH =10;
 const RECT_HEIGHT = 50;
-let colors = [];
+let colors = ["#1C0028", "#2A0C30", "#470328", "#930B21", "#1F3241"];// Fill with HEX cides as Strings
 
 
 function setup() {
@@ -20,13 +20,14 @@ function draw() {
   randomSeed(0);
   drawRowRGB(height*0.2);
   drawRowHSB(height/2);
+  drawRowCustom(height*0.8);
 }
 
 function drawRowRGB(yPos){
   noStroke();
   colorMode(RGB, 255);
   for(let x = 0; x<width; x+= RECT_WIDTH){
-    fill(random(255), random(255), random(255));
+    fill(random(60, 100), random(20), random(50,220));
     rect(x, yPos, RECT_WIDTH, RECT_HEIGHT);
   }
 }
@@ -42,9 +43,10 @@ function drawRowHSB(yPos){
 
 function drawRowCustom(yPos){
   colorMode(RGB, 255);
-  for(let x = 0; x<width; x+= RECT_WIDTH){
-    fill();
-    rect(x, yPos, RECT_WIDTH, RECT_HEIGHT);
+  for(let x = 0; x<width; x+= RECT_WIDTH*0.24){
+    let index = int(random(colors.length));
+    fill(colors[index]);
+    rect(x, yPos, RECT_WIDTH*0.25, RECT_HEIGHT*4);
   }
 }
 
