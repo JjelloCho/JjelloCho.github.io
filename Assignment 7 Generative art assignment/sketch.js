@@ -22,10 +22,8 @@ function draw() {
 }
 
 function sinCurve(){
-  let counter = 1;
   strokeWeight(0.01);
-  for(let x = 0; x<width*0.2; x+= 0.01 ){
-    counter++;
+  for(let x = 0; x<width*0.06; x+= 0.01 ){
     let periodLength = map(x, 0, width*0.4, 2, 25);
     push();
     //translate(width*0.15, height*0.25);
@@ -39,7 +37,7 @@ function sinCurve(){
 function multSin(){
   for( let i = 0; i<90; i++){
     push();
-    translate(0, i*4);
+    translate(0, i*7);
     sinCurve();
     pop();
   }
