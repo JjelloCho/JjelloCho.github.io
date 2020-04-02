@@ -56,7 +56,8 @@ function snake() {
     x = map(noise(time1), 0, 1, 0, width);
     y = map(noise(time2), 0, 1, 0, height);
     rectMode(CENTER);
-    rect(x, y, SNAKEWIDTH, SNAKEHEIGHT);
+    //rect(x, y, SNAKEWIDTH, SNAKEHEIGHT);
+    ellipse(x, y, SNAKEWIDTH, SNAKEHEIGHT);
     time1 += DT;
     time2 += DT;
     if (i === maxSnakeL - 1) {
