@@ -1,5 +1,5 @@
 // Generative Art
-// Your Name
+// Jordan Cho
 // Date
 //
 // Extra for Experts:
