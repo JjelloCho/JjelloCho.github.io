@@ -1,4 +1,4 @@
-// Pseudo Code
+// Target Game
 // Your Name
 // Date
 //
@@ -16,8 +16,7 @@ let currentGame;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-  currentGame = new Game();
+  currentGame = new Game();//makes theGame
 }
 
 function draw() {
@@ -26,12 +25,20 @@ function draw() {
 }
 
 function keyPressed(){
-  if( keyCode === 32){
-    currentGame.createShot();
+  if(currentGame.returnGameOver() === false){
+    if( keyCode === 32){
+      currentGame.createShot();//creates the shot based of of power and angle
+      currentGame.changeShots(); //changes inventorys of shots
+    }
+  }
+  if(currentGame.returnAlive()){//resets game once played
+    if(keyCode === 13){
+      currentGame.playAgain();
+    }
   }
 }
 
-function quickInput(){
+function quickInput(){//changes angles
   if(keyIsDown(LEFT_ARROW)){
     currentGame.changeAngle(true);
   }

@@ -13,7 +13,20 @@ class Game {
     image(backImage, 0, 0);
 
     //proccess and draw every CannonBall
+    for(let i = 0; i<this.shots.length; i++){
+      let b = this.shots[i];
+      b.move();
+      b.display();
+      b.checkGroundCollision();
+      if(b.getAlive() === false){
+        if(b.getCollisionType() ===1){
+          //ground Collision
+          this.shots.splice(i,1);
+          i--;
+        }
 
+      }
+    }
     //process and draw every smoke particle
 
     //draw the cannon
@@ -65,6 +78,12 @@ class Game {
         this.cannonPower -= 0.15;
       }
     }
+  }
+
+  createShot(){
+    let v = createVector(this.cannonPower * cos(radians(this.cannonAngle)),
+      this.cannonPower * sin(radians(this.cannonAngle) *-1));
+    this.shots.push(new Ball(v));
   }
 
 }
